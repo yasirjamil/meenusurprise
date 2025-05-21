@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>For You, My Love</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: linear-gradient(to bottom, #87ceeb 0%, #b0e0ff 70%);
+    font-family: 'Poppins', sans-serif;
+    color: #5a2a4a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Clouds container - fixed behind content */
+  .clouds {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    pointer-events: none;
+  }
+
+  /* Individual cloud shapes */
+  .cloud {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 50%;
+    position: absolute;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.6));
+  }
+
+  .cloud .circle1 {
+    width: 80px;
+    height: 80px;
+    top: 0;
+    left: 20px;
+    position: absolute;
+  }
+  .cloud .circle2 {
+    width: 100px;
+    height: 100px;
+    top: -20px;
+    left: 60px;
+    position: absolute;
+  }
+  .cloud .circle3 {
+    width: 70px;
+    height: 70px;
+    top: 10px;
+    left: 110px;
+    position: absolute;
+  }
+  .cloud .base {
+    width: 150px;
+    height: 60px;
+    background: rgba(255,255,255,0.85);
+    border-radius: 100px / 40px;
+    position: absolute;
+    top: 30px;
+    left: 0;
+  }
+
+  .cloud1 {
+    top: 20vh;
+    left: 10vw;
+    transform: scale(1.1);
+    animation: floatCloud1 30s linear infinite;
+  }
+  .cloud2 {
+    top: 40vh;
+    left: 65vw;
+    transform: scale(0.9);
+    animation: floatCloud2 45s linear infinite;
+  }
+  .cloud3 {
+    top: 60vh;
+    left: 35vw;
+    transform: scale(1.3);
+    animation: floatCloud3 35s linear infinite;
+  }
+
+  @keyframes floatCloud1 {
+    0% { transform: translateX(0) scale(1.1); }
+    50% { transform: translateX(15px) scale(1.1); }
+    100% { transform: translateX(0) scale(1.1); }
+  }
+  @keyframes floatCloud2 {
+    0% { transform: translateX(0) scale(0.9); }
+    50% { transform: translateX(-20px) scale(0.9); }
+    100% { transform: translateX(0) scale(0.9); }
+  }
+  @keyframes floatCloud3 {
+    0% { transform: translateX(0) scale(1.3); }
+    50% { transform: translateX(10px) scale(1.3); }
+    100% { transform: translateX(0) scale(1.3); }
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.2rem;
+    letter-spacing: 0.1em;
+    animation: fadeInMoveDown 1.2s ease forwards;
+    opacity: 1;
+    text-align: center;
+  }
+
+  p {
+    max-width: 90%;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    text-align: center;
+    margin: 1rem 0 2rem;
+    opacity: 1;
+    animation: fadeIn 3s ease forwards 1.5s;
+  }
+
+  .heart {
+    font-size: 6rem;
+    color: #e63946;
+    animation: pulse 2s infinite;
+    user-select: none;
+  }
+
+  button {
+    background-color: #e63946;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 0.7rem 2.2rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 6px 12px rgba(230, 57, 70, 0.5);
+    position: relative;
+    z-index: 10;
+  }
+
+  button:hover {
+    background-color: #b02a32;
+  }
+
+  .butterfly-container {
+    pointer-events: none;
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+    width: 100vw;
+    height: 30vh;
+    z-index: -1;
+    overflow: visible;
+  }
+
+  .butterfly {
+    position: absolute;
+    font-size: 32px;
+    user-select: none;
+    filter: drop-shadow(0 0 3px rgba(74, 144, 226, 0.8));
+    will-change: transform;
+    color: #2a6fdb;
+    opacity: 0.9;
+  }
+
+  /* Media queries for mobile responsiveness */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+    }
+
+    button {
+      padding: 0.6rem 1.8rem;
+      font-size: 1.1rem;
+    }
+
+    .butterfly-container {
+      height: 40vh;
+    }
+
+    .butterfly {
+      font-size: 28px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    p {
+      font-size: 1rem;
+      max-width: 90%;
+    }
+
+    button {
+      padding: 0.5rem 1.5rem;
+      font-size: 1rem;
+    }
+
+    .butterfly-container {
+      height: 50vh;
+    }
+
+    .butterfly {
+      font-size: 24px;
+    }
+  }
+</style>
+</head>
+<body>
+  <div aria-label="Background clouds" class="clouds" aria-hidden="true">
+    <div class="cloud cloud1">
+      <div class="circle1 cloud"></div>
+      <div class="circle2 cloud"></div>
+      <div class="circle3 cloud"></div>
+      <div class="base cloud"></div>
+    </div>
+    <div class="cloud cloud2">
+      <div class="circle1 cloud"></div>
+      <div class="circle2 cloud"></div>
+      <div class="circle3 cloud"></div>
+      <div class="base cloud"></div>
+    </div>
+    <div class="cloud cloud3">
+      <div class="circle1 cloud"></div>
+      <div class="circle2 cloud"></div>
+      <div class="circle3 cloud"></div>
+      <div class="base cloud"></div>
+    </div>
+  </div>
+
+  <main role="main" aria-labelledby="main-title" tabindex="0" style="z-index: 1; position: relative;">
+    <h1 id="main-title"> My Butterfly ❤️</h1>
+    <p>Hey Meenu the most beautiful person in the world, to be honest i dont know what to say but let this little surprise remind you how special you are.</p>
+    <div class="heart" aria-label="Heart symbol" role="img">🫂</div>
+    <button id="cheerUpBtn" aria-pressed="false" aria-label="Click to see a surprise message">Touch me!</button>
+    <p id="surpriseMessage" style="margin-top: 1rem; font-weight: 600; font-size: 1.25rem; color: #b02a32; display: none;" aria-live="polite"></p>
+  </main>
+
+  <div class="butterfly-container" aria-hidden="true"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const butterflyContainer = document.querySelector('.butterfly-container');
+      const maxButterflies = 15;
+      const butterflies = [];
+
+      function randomRange(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      function createButterfly() {
+        const butterfly = document.createElement('div');
+        butterfly.classList.add('butterfly');
+        butterfly.textContent = '🦋';
+        butterfly.style.color = '#2a6fdb'; // blue color on emoji
+
+        const size = randomRange(24, 36);
+        butterfly.style.fontSize = size + 'px';
+
+        const startLeft = randomRange(0, window.innerWidth - size);
+        butterfly.style.left = startLeft + 'px';
+
+        butterflyContainer.appendChild(butterfly);
+
+        butterflies.push({
+          element: butterfly,
+          x: startLeft,
+          y: 0,
+          size: size,
+          speedX: randomRange(0.5, 1.2),
+          speedY: randomRange(0.8, 1.5),
+          amplitude: randomRange(10, 25),
+          frequency: randomRange(0.02, 0.05),
+          phase: randomRange(0, Math.PI * 2)
+        });
+      }
+
+      function animate() {
+        butterflies.forEach((b, i) => {
+          b.x += b.speedX;
+          b.y += b.speedY;
+
+          const oscillationX = Math.sin(b.y * b.frequency + b.phase) * b.amplitude;
+
+          const transformX = b.x + oscillationX;
+          const transformY = -b.y;
+
+          if (
+            transformX > window.innerWidth + 50 ||
+            transformY < -butterflyContainer.clientHeight - 50
+          ) {
+            b.element.remove();
+            butterflies.splice(i, 1);
+            return;
+          }
+
+          b.element.style.transform = `translate(${transformX}px, ${transformY}px)`;
+        });
+        requestAnimationFrame(animate);
+      }
+
+      setInterval(() => {
+        if (butterflies.length < maxButterflies) {
+          createButterfly();
+        }
+      }, 400);
+
+      animate();
+
+      const button = document.getElementById('cheerUpBtn');
+      const surpriseMessage = document.getElementById('surpriseMessage');
+      const messages = [
+        "Hello princess touch me multiple times",
+        "Ever since I met you, I’ve noticed my days and nights are changing",
+        "you are so beautifull babby just like the buterflies in the sky",
+        "I can see my self clearly i cant control my feelings and emotions for you",
+        "I always adore you, even when you are at your worst",  
+        "Whenever we meet, its like seeing you for first time , nervous as always .",
+        "i love you so much, you pretty little angry babby",
+      ];
+      let messageIndex = 0;
+      button.addEventListener('click', () => {
+        surpriseMessage.textContent = messages[messageIndex];
+        surpriseMessage.style.display = 'block';
+        button.setAttribute('aria-pressed', 'true');
+        messageIndex = (messageIndex + 1) % messages.length;
+      });
+    });
+  </script>
+</body>
+</html>
